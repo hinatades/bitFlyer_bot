@@ -1,2 +1,18 @@
 # Distribution / packaging
 env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+env/
+
+# Unit test / coverage reports
+.tox/
+flake8.txt
+
+# Database
+*.sqlite3
+
+# Django stuff:
+*.log
