@@ -1,4 +1,5 @@
-from rest_frameworks import serializers
+from rest_framework import serializers
+
 
 class TradingSerializer(serializers.Serializer):
 
@@ -8,5 +9,5 @@ class TradingSerializer(serializers.Serializer):
         min_value = 1,
         max_value = 1000
     )
-    before = serializers.CharField(reqired=False)
+    before = serializers.CharField(required=False)
     after = serializers.CharField(required=False)

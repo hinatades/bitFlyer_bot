@@ -16,7 +16,7 @@ def get_info(count=None, befor=None, after=None):
     api_endpoint = 'https://api.bitflyer.jp'
     timestamp = str(time.time())
     text = timestamp + method + path
-    sign = hmac.new(SECRET_KEY, text, hashlib.sha256).hexdigest()
+    sign = hmac.new(SECRET_KEY.encode(), text.encode(), hashlib.sha256).hexdigest()
     res = requests.get(
         api_endpoint+path,
         headers = {
