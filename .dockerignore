@@ -1,0 +1,9 @@
+# Elastic Beanstalk Files
+Dockerrun.aws.*
+.ebextensions/
+.elasticbeanstalk/
+.ebignore
+
+.git
+.github/
+.circleci/
