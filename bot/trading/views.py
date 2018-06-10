@@ -54,6 +54,18 @@ class GetBoardView(APIView):
 
         return Response(get_info('getboard'))
 
+
+class BoardView(APIView):
+    
+    def get(self, request):
+        """
+        """
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('board'))
+
+
 class GetTickerView(APIView):
 
     def get(self, request):
@@ -119,7 +131,7 @@ class GetHealthView(APIView):
         return Response(get_info('gethealth'))
 
 
-class GetChatView(APIView):
+class GetChatsView(APIView):
 
     def get(self, request):
         """
@@ -127,4 +139,4 @@ class GetChatView(APIView):
         serializer = TradingSerializer(data=request.query_params, context=request)
         serializer.is_valid(raise_exception=True)
 
-        return Response(get_info('getchat'))
+        return Response(get_info('getchats'))
