@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.views import Response
 from trading.get_info import get_info
 from trading.serializers import TradingSerializer
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 class TradingView(APIView):
@@ -30,7 +30,7 @@ class GetMarketView(APIView):
         serializer = TradingSerializer(data=request.query_params, context=request)
         serializer.is_valid(raise_exception=True)
 
-        return Response(get_info('getmarket'))
+        return Response(get_info('getmarkets'))
 
 
 class MarketView(APIView):
@@ -41,7 +41,7 @@ class MarketView(APIView):
         serializer = TradingSerializer(data=request.query_params, context=request)
         serializer.is_valid(raise_exception=True)
 
-        return Response(get_info('market'))
+        return Response(get_info('markets'))
 
 
 class GetBoardView(APIView):

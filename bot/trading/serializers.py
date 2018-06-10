@@ -11,7 +11,7 @@ class TradingSerializer(serializers.Serializer):
     )
     before = serializers.CharField(required=False)
     after = serializers.CharField(required=False)
-    product_code = serializers.ChoiseField(
+    product_code = serializers.ChoiceField(
         required=False,
         choices = ['BTC_JPY']
     )
