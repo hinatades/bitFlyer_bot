@@ -86,6 +86,16 @@ class GetExecutionsView(APIView):
 
         return Response(get_info('getexecutions'))
 
+class ExecutionsView(APIView):
+    
+    def get(self, request):
+        """
+        """
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('executions'))
+    
 
 class GetBoardStateView(APIView):
 
