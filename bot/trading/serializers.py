@@ -15,3 +15,4 @@ class TradingSerializer(serializers.Serializer):
         required=False,
         choices = ['BTC_JPY']
     )
+    from_date = serializers.DateTimeField(required=False)
