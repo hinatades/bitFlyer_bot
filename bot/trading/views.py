@@ -8,18 +8,11 @@ from django.urls import reverse
 
 class TradingView(APIView):
 
-    def index(request):
-        """
-        """
-        return render(request, 'index.html')
-
     def get(self, request):
         """
         """
-        serializer = TradingSerializer(data=request.query_params, context=request)
-        serializer.is_valid(raise_exception=True)
 
-        return Response(get_info())
+        return render(request, 'index.html')
 
 
 class GetMarketView(APIView):

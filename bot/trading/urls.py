@@ -3,7 +3,7 @@ from . import views
 
  
 urlpatterns = [
-    path('', views.TradingView.as_view(), name='get'),
+    path('', views.TradingView.as_view(), name='index'),
     path('getmarkets', views.GetMarketView.as_view(), name='getmarkets'),
     path('markets', views.MarketView.as_view(), name='markets'),
     path('getboard', views.GetBoardView.as_view(), name='getboard'),
