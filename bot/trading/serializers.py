@@ -13,6 +13,6 @@ class TradingSerializer(serializers.Serializer):
     after = serializers.CharField(required=False)
     product_code = serializers.ChoiceField(
         required=False,
-        choices = ['BTC_JPY']
+        choices = ['BTC_JPY', 'FX_BTC_JPY', 'ETH_BTC']
     )
     from_date = serializers.DateTimeField(required=False)
