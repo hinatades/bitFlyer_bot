@@ -100,7 +100,6 @@ class ExecutionsView(APIView):
         serializer.is_valid(raise_exception=True)
 
         return Response(get_info('executions'))
-    
 
 class GetBoardStateView(APIView):
 
@@ -133,3 +132,167 @@ class GetChatsView(APIView):
         serializer.is_valid(raise_exception=True)
 
         return Response(get_info('getchats'))
+
+# Private API
+
+class GetPerissionsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getpermissions'))
+
+class GetBalanceView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getbalance'))
+
+class GetCollateralView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getcollateral'))
+
+class GetCollateralAccountsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getcollateralaccounts'))
+
+class GetAddressesView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getaddresses'))
+
+class GetCoinInsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getcoinins'))
+
+class GetCoinOutsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getcoinouts'))
+
+class GetBankAccountsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getbankaccount'))
+
+class GetDepositsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getdeposits'))
+
+class GetWithdrawalsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getwithdrawals'))
+
+class SendChildOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/sendchildorder'))
+
+class CancelChildOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/cancelchildorder'))
+
+class SendParentOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/sendparentorder'))
+
+class CancelParentOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/cancelparentorder'))
+
+class CancelAllChildOrdersView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/cancelallchildorders'))
+
+class GetChildOrdersView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getchildorders'))
+
+class GetChildOrdersView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getchildorders'))
+
+class GetParentOrdersView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getparentorders'))
+
+class GetParentOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getparentorder'))
+
+class GetExecutionsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getexecutions'))
+
+class GetPositionsView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getpositions'))
+
+class GetCollateralHistoryView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/getcollateralhistory'))
+
+class GetTradingCommissionView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('me/gettradingcommission'))
+
