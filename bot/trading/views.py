@@ -4,6 +4,7 @@ from rest_framework.views import Response
 from trading.get_info import get_info, post_notification
 from trading.serializers import TradingSerializer
 from django.urls import reverse
+import urllib
 
 
 class TradingView(APIView):
@@ -38,7 +39,7 @@ class MarketView(APIView):
 
 
 class GetBoardView(APIView):
-    
+
     def get(self, request):
         """
         """
@@ -49,7 +50,7 @@ class GetBoardView(APIView):
 
 
 class BoardView(APIView):
-    
+
     def get(self, request):
         """
         """
@@ -262,7 +263,11 @@ class GetChildOrdersView(APIView):
     def get(self, request):
         serializer = TradingSerializer(data=request.query_params, context=request)
         serializer.is_valid(raise_exception=True)
-        res = get_info('/v1/me/getchildorders?product_code=FX_BTC_JPY&count=1')
+        path = '/v1/me/getchildorders'
+        query = urllib.parse.urlencode(request.query_params)
+        if query:
+            path = path + '?' + query
+        res = get_info(path)
         post_notification(res)
         return Response(res)
 
@@ -271,16 +276,13 @@ class GetParentOrdersView(APIView):
     def get(self, request):
         serializer = TradingSerializer(data=request.query_params, context=request)
         serializer.is_valid(raise_exception=True)
-
-        return Response(get_info('/v1/me/getparentorders?product_code=FX_BTC_JPY&count=1'))
-
-
-class GetParentOrderView(APIView):
-    def get(self, request):
-        serializer = TradingSerializer(data=request.query_params, context=request)
-        serializer.is_valid(raise_exception=True)
-
-        return Response(get_info('/v1/me/getparentorder'))
+        path = '/v1/me/getparentorders'
+        query = urllib.parse.urlencode(request.query_params)
+        if query:
+            path = path + '?' + query
+        res = get_info(path)
+        post_notification(res)
+        return Response(res)
 
 
 class GetExecutionsView(APIView):
