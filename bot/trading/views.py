@@ -285,6 +285,14 @@ class GetParentOrdersView(APIView):
         return Response(res)
 
 
+class GetParentOrderView(APIView):
+    def get(self, request):
+        serializer = TradingSerializer(data=request.query_params, context=request)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(get_info('/v1/me/getparentorder'))
+
+
 class GetExecutionsView(APIView):
     def get(self, request):
         serializer = TradingSerializer(data=request.query_params, context=request)
