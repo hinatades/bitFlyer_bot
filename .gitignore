@@ -17,5 +17,8 @@ flake8.txt
 # Django stuff:
 *.log
 
+# vscode
+.vscode/
+
 # API Key
 bot/key.py
