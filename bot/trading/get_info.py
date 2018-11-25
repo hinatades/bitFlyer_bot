@@ -94,4 +94,59 @@ def build_order_bot():
             print('Ordered: ' + _process_json_array(USER_NAME, res)[0]['注文時刻'])
         befor_order_time = order_time
 
-# build_local_bot()
+
+def build_ticker_bot():
+    """
+    """
+    num = 0
+    res = []
+    while (num < 5):
+        sleep(1)
+        res = get_info('/v1/getticker?product_code=FX_BTC_JPY&count=1')
+        post_ticker_notification(res)
+
+
+def post_ticker_notification(info):
+    """
+    Post notification to #dev
+    """
+    api_endpoint = SLACK_URL
+    text = _process_dict_for_slack(_process_ticker_json_dict(info))
+    requests.post(
+        api_endpoint,
+        data=json.dumps({
+            "username": "btcfxjp",
+            "text": text,
+            "icon_emoji": ":ghost:",
+        })
+    )
+
+
+def _process_ticker_json_dict(json_dict):
+    """
+    """
+    new_dict = {}
+    print(json_dict)
+    for k, v in json_dict.items():
+        if k == 'timestamp':
+            try:
+                dt = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f')
+                jst_time = dt.astimezone(timezone('Asia/Tokyo')).strftime('%Y/%m/%d %H:%M:%S')
+            except ValueError:
+                dt = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S')
+                jst_time = dt.astimezone(timezone('Asia/Tokyo')).strftime('%Y/%m/%d %H:%M:%S')
+            new_dict['time'] = jst_time
+        elif k == 'ltp':
+            new_dict['price'] = v
+    return new_dict
+
+
+def _process_dict_for_slack(json_dict):
+    """
+    """
+
+    text = json.dumps(json_dict)
+    return text
+
+
+build_ticker_bot()
