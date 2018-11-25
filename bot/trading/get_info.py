@@ -13,14 +13,16 @@ from key import USER_NAME, API_KEY, SECRET_KEY, SLACK_URL
 
 
 def get_info(path, query_params=None):
+    """
+    """
     method = 'GET'
     api_endpoint = 'https://api.bitflyer.jp'
     timestamp = str(time.time())
-    text = timestamp + method + path # + body
+    text = timestamp + method + path  # + body
     sign = hmac.new(SECRET_KEY.encode(), text.encode(), hashlib.sha256).hexdigest()
     res = requests.get(
         api_endpoint + path,
-        headers = {
+        headers={
             'ACCESS-KEY': API_KEY,
             'ACCESS-TIMESTAMP': timestamp,
             'ACCESS-SIGN': sign,
@@ -45,10 +47,10 @@ def post_notification(info):
     )
 
 
-def _process_json_array(user, json_array):
+def _process_json_array(user, json_dict):
 
     new_list = []
-    for i in json_array:
+    for i in json_dict:
         new_dict = {'ユーザー': user}
         for k, v in i.items():
             if k == 'size':
@@ -77,7 +79,7 @@ def _process_array_for_slack(json_array):
     return text
 
 
-def build_local_bot():
+def build_order_bot():
     """
     """
     num = 0

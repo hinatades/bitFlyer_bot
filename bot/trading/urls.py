@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 
- 
+
 urlpatterns = [
     # Public API
     path('', views.TradingView.as_view(), name='index'),
