@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'trading',
+    'trade',
     'slack'
 ]
 
@@ -58,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join('trading', 'templates'),
+            os.path.join('trade', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

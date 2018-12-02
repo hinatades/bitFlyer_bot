@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 
-class TradingSerializer(serializers.Serializer):
+class TradeSerializer(serializers.Serializer):
 
     count = serializers.IntegerField(
         required=False,

@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     # Public API
-    path('', views.TradingView.as_view(), name='index'),
+    path('', views.TradeView.as_view(), name='index'),
     path('getmarkets', views.GetMarketView.as_view(), name='getmarkets'),
     path('markets', views.MarketView.as_view(), name='markets'),
     path('getboard', views.GetBoardView.as_view(), name='getboard'),
@@ -38,5 +38,5 @@ urlpatterns = [
     path('me/getexecutions', views.GetExecutionsView.as_view(), name='getchats'),
     path('me/getpositions', views.GetPositionsView.as_view(), name='getchats'),
     path('me/getcollateralhistory', views.GetCollateralHistoryView.as_view(), name='getchats'),
-    path('me/gettradingcommission', views.GetTradingCommissionView.as_view(), name='getchats'),
+    path('me/gettradecommission', views.GetTradeCommissionView.as_view(), name='getchats'),
 ]

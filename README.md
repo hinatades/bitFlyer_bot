@@ -1,6 +1,6 @@
 # bitFlyer_bot
 
-bitFlyer automated trading Bot in Python
+bitFlyer automated trade Bot in Python
 
 ## Installation
 
