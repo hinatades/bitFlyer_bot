@@ -20,5 +20,8 @@ flake8.txt
 # vscode
 .vscode/
 
+# ticker
+ticker.csv
+
 # API Key
 bot/key.py
