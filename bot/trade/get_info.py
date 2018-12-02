@@ -1,6 +1,7 @@
 
 # -*- coding: utf-8 -*-
 
+import csv
 import json
 import requests
 import time
@@ -95,15 +96,47 @@ def build_order_bot():
         befor_order_time = order_time
 
 
-def build_ticker_bot():
+def build_ticker_bot(count=None):
     """
     """
     num = 0
     res = []
+    if not count:
+        count = 1
     while (num < 5):
         sleep(1)
-        res = get_info('/v1/getticker?product_code=FX_BTC_JPY&count=1')
+        res = get_info('/v1/getticker?product_code=FX_BTC_JPY&count=' + count)
         post_ticker_notification(res)
+
+
+def make_ticker_csv(count=1):
+    """
+    """
+
+    with open("ticker.csv", "w", newline="") as f:
+
+        keys = [
+            'timestamp', 'product_code', 'tick_id',
+            'best_ask', 'best_ask_size', 'best_bid', 'best_bid_size',
+            'total_ask_depth', 'total_bid_depth', 'ltp',
+            'volume', 'volume_by_product'
+        ]
+        writer = csv.DictWriter(f, fieldnames=keys, delimiter=",", quotechar='"')
+        writer.writeheader()
+        before_timestamp = ''
+        for i in range(count):
+            res = get_info('/v1/getticker?product_code=FX_BTC_JPY')
+            try:
+                dt = datetime.strptime(res['timestamp'], '%Y-%m-%dT%H:%M:%S.%f')
+                res['timestamp'] = dt.astimezone(timezone('Asia/Tokyo')).strftime('%Y/%m/%d %H:%M:%S')
+            except ValueError:
+                dt = datetime.strptime(res['timestamp'], '%Y-%m-%dT%H:%M:%S')
+                res['timestamp'] = dt.astimezone(timezone('Asia/Tokyo')).strftime('%Y/%m/%d %H:%M:%S')
+            sleep(0.3)
+            if res['timestamp'] != before_timestamp:
+                writer.writerow(res)
+                print(res.values())
+                before_timestamp = res['timestamp']
 
 
 def post_ticker_notification(info):
@@ -149,4 +182,4 @@ def _process_dict_for_slack(json_dict):
     return text
 
 
-build_ticker_bot()
+make_ticker_csv(100)
