@@ -116,10 +116,18 @@ def make_ticker_csv(count=1):
     with open("ticker.csv", "w", newline="") as f:
 
         keys = [
-            'timestamp', 'product_code', 'tick_id',
-            'best_ask', 'best_ask_size', 'best_bid', 'best_bid_size',
-            'total_ask_depth', 'total_bid_depth', 'ltp',
-            'volume', 'volume_by_product'
+            'timestamp',
+            'product_code',
+            'tick_id',
+            'best_ask',
+            'best_ask_size',
+            'best_bid',
+            'best_bid_size',
+            'total_ask_depth',
+            'total_bid_depth',
+            'ltp',
+            'volume',
+            'volume_by_product'
         ]
         writer = csv.DictWriter(f, fieldnames=keys, delimiter=",", quotechar='"')
         writer.writeheader()
@@ -135,7 +143,7 @@ def make_ticker_csv(count=1):
             sleep(0.3)
             if res['timestamp'] != before_timestamp:
                 writer.writerow(res)
-                print(res.values())
+                print(res)
                 before_timestamp = res['timestamp']
 
 
@@ -182,4 +190,5 @@ def _process_dict_for_slack(json_dict):
     return text
 
 
-make_ticker_csv(100)
+# make_ticker_csv(100)
+# build_order_bot()

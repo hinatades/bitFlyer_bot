@@ -5,3 +5,4 @@ requests
 pandas
 numpy
 matplotlib
+pymysql
