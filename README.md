@@ -1,4 +1,4 @@
-# bitFlyer_bot
+# bitFlyer\_bot
 
 bitFlyer automated trade Bot in Python
 
@@ -6,13 +6,13 @@ bitFlyer automated trade Bot in Python
 
 Using pip
 
-```
+```text
 $ pip install git+https://github.com/hinatades/bitFlyer_bot.git
 ```
 
 Start the server
 
-```
+```text
 $ cd bitFlyer_bot
 
 # build a virtual environment
@@ -35,4 +35,5 @@ $ python bot/manage.py runserver
 
 ## Author
 
-@hinatades (<hnttisk@gmail.com>)
+@hinatades \([hnttisk@gmail.com](mailto:hnttisk@gmail.com)\)
+
