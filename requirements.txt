@@ -1,4 +1,4 @@
-django==2.2.3
+django==2.2.13
 djangorestframework==3.10.0
 django-bootstrap4==0.0.6
 requests
